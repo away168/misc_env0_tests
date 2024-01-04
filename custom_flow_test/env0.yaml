@@ -12,7 +12,6 @@ deploy:
           run: |
             echo $ENV0_AWS_ROLE_ARN
             echo $ENV0_AWS_ROLE_EXTERNAL_ID
-            cat ~/.aws/cli/cache
         - name: Assume Role
           run: |
             export $(printf "AWS_ACCESS_KEY_ID=%s AWS_SECRET_ACCESS_KEY=%s AWS_SESSION_TOKEN=%s" \
