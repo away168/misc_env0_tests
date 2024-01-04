@@ -1,0 +1,15 @@
+version: 2
+
+deploy:
+  steps:
+    setupVariables:
+      after:
+        - name: Add Role
+          run: |
+            echo "ENV0_AWS_ROLE_ARN=arn:aws:iam::326535729404:role/env0-acme-assume-role" >> $ENV0_ENV
+            echo "ENV0_AWS_ROLE_ARN=bde19c6d-d0dc-4b11-a951-8f43fe49db92" >> $ENV0_ENV
+        - name: CHECK ROLE
+          run: |
+            export
+            echo $ENV_AWS_ROLE_ARN
+            aws sts get-caller-identity
