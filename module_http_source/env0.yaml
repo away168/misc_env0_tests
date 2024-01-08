@@ -7,7 +7,7 @@ deploy:
         - name: Setup Git Config
           run: |
             if [[ "$SETUP_GIT" == "true" ]]; then
-              git config --global url.https://user:$ENV0_VCS_ACCESS_TOKEN@$GIT_URL/.insteadOf $GIT_URL/
+              git config --global url.https://user:$ENV0_VCS_ACCESS_TOKEN@$GIT_ADDR/.insteadOf https://$GIT_ADDR/
             fi
           env:
-            GIT_URL: "https://github.com/away168/misc_env0_tests"
+            GIT_ADDR: "github.com/away168/misc_env0_tests"
