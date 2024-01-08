@@ -10,4 +10,4 @@ deploy:
               git config --global url.https://user:$ENV0_VCS_ACCESS_TOKEN@$GIT_URL/.insteadOf $GIT_URL/
             fi
           env:
-            GIT_URL: https://github.com/away168/misc_env0_tests
+            GIT_URL: "https://github.com/away168/misc_env0_tests"
