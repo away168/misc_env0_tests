@@ -7,7 +7,9 @@ deploy:
         - name: Check for files
           run: |
             ls -la
-            ls -la .terraform
+            if [[ -e .terraform ]]; then 
+              ls -la .terraform
+            fi
     terraformInit:
       before:
         - name: Add a file
