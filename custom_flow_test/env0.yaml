@@ -15,4 +15,7 @@ deploy:
         - name: Add a file
           run: |
             touch $FILENAME
-            touch .terraform/$FILENAME
+            if [[ -e .terraform ]]; then 
+              touch .terraform/$FILENAME
+            fi
+           
