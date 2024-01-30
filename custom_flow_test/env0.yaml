@@ -6,4 +6,5 @@ deploy:
       after:
         - name: echo $ENV0_TF_PLAN_JSON
           run: |
-            echo $ENV0_TF_PLAN_JSON | jq '.'
+            env
+            echo ${ENV0_TF_PLAN_JSON}
