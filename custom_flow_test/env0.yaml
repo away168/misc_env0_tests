@@ -2,20 +2,8 @@ version: 2
 
 deploy:
   steps:
-    setupVariables:
+    terraformPlan:
       after:
-        - name: Check for files
+        - name: echo $ENV0_TF_PLAN_JSON
           run: |
-            ls -la
-            if [[ -e .terraform ]]; then 
-              ls -la .terraform
-            fi
-    terraformInit:
-      before:
-        - name: Add a file
-          run: |
-            touch $FILENAME
-            if [[ -e .terraform ]]; then 
-              touch .terraform/$FILENAME
-            fi
-           
+            echo $ENV0_TF_PLAN_JSON | jq -C '.'
