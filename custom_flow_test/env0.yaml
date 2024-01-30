@@ -6,4 +6,5 @@ deploy:
       after:
         - name: echo $ENV0_TF_PLAN_JSON
           run: |
-            cat ${ENV0_TF_PLAN_JSON} | jq -C '.'
+            cat ${ENV0_TF_PLAN_JSON} | jq '.resource_changes | all(.change.actions == ["no-op"])'
+            
