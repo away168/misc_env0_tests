@@ -7,4 +7,10 @@ deploy:
         - name: echo $ENV0_TF_PLAN_JSON
           run: |
             cat ${ENV0_TF_PLAN_JSON} | jq '.resource_changes | all(.change.actions == ["no-op"])'
+    terraformApply:
+      after:
+        - name: cat `env0_tf_plan.json`
+          run: |
+            cat $ENV0_TEMPLATE_DIR/env0_tf_plan.json
+            cat $ENV0_TEMPLATE_DIR/env0_tf_plan.json | jq '.resource_changes | all(.change.actions == ["no-op"])'
             
