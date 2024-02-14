@@ -1,0 +1,11 @@
+environments:
+  vpc:
+    name: ${WORKSPACE_NAME}-vpc
+    templateName: 'wf-test-template'
+    workspace: ${WORKSPACE_NAME}-vpc
+  eks:
+    name: ${WORKSPACE_NAME}-eks
+    templateName: 'wf-test-template'
+    workspace: ${WORKSPACE_NAME}-eks
+    needs:
+      - vpc
