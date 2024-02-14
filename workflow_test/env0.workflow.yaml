@@ -1,11 +1,11 @@
 environments:
   vpc:
-    name: ${ENV0_WORKSPACE_NAME}-vpc
+    name: ${WORKSPACE_NAME}-vpc
     templateName: 'wf-a-network'
-    workspace: ${ENV0_WORKSPACE_NAME}-vpc
+    workspace: ${WORKSPACE_NAME}-vpc
   eks:
-    name: ${ENV0_WORKSPACE_NAME}-eks
+    name: ${WORKSPACE_NAME}-eks
     templateName: 'wf-b1-compute'
-    workspace: ${ENV0_WORKSPACE_NAME}-eks
+    workspace: ${WORKSPACE_NAME}-eks
     needs:
       - vpc
