@@ -1,5 +1,7 @@
-resource "azurerm_resource_group" "example" {
-  name     = "${var.prefix}-sales-rg"
+module "wrap-rg" {
+  source = "../azure-rg"
+
+  prefix = var.prefix
   location = var.location
 }
 
