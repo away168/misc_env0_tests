@@ -25,7 +25,7 @@ include "root" {
 # Include the envcommon configuration for the component. The envcommon configuration contains settings that are common
 # for the component across all environments.
 include "envcommon" {
-  path   = "${dirname(find_in_parent_folders())}/_envcommon/backend.hcl"
+  path   = "${dirname(find_in_parent_folders())}/_envcommon/azure-rg.hcl"
   expose = true
 }
 
