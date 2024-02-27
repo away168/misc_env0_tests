@@ -1,5 +1,5 @@
 module "wrap-rg" {
-  source = "../azure-rg"
+  source = "../../modules/azure-rg"
 
   prefix = var.prefix
   location = var.location
