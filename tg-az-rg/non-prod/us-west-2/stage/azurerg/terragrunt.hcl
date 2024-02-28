@@ -25,22 +25,8 @@ include "root" {
 # Include the envcommon configuration for the component. The envcommon configuration contains settings that are common
 # for the component across all environments.
 terraform {
-  #source = "${local.base_source_url}?ref=v0.7.0"
   source = "./"
 }
-
-locals {
-  # Automatically load environment-level variables
-  environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
-
-  # Extract out common variables for reuse
-  env = local.environment_vars.locals.environment
-
-  # Expose the base source URL so different versions of the module can be deployed in different environments. This will
-  # be used to construct the terraform block in the child terragrunt configurations.
-  base_source_url = "${dirname(find_in_parent_folders())}/modules/azure-rg"
-}
-
 
 # ---------------------------------------------------------------------------------------------------------------------
 # MODULE PARAMETERS
@@ -48,5 +34,5 @@ locals {
 # environments.
 # ---------------------------------------------------------------------------------------------------------------------
 inputs = {
-  prefix = "${local.env}"
+  prefix = "stage"
 }
