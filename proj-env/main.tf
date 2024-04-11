@@ -17,7 +17,7 @@ locals {
 
 resource "env0_template_project_assignment" "assignment" {
   template_id = local.template_id
-  project_id  = data.env0_project.default_project.id
+  project_id  = env0_project.proj-foo.id
 }
 
 resource "env0_project" "proj-foo" {
