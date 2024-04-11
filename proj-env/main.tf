@@ -11,6 +11,15 @@ provider "env0" {
   # Configuration options
 }
 
+locals {
+  template_id = "0830c0ac-45ae-4256-8b20-17019dfd127f"
+}
+
+resource "env0_template_project_assignment" "assignment" {
+  template_id = local.template_id
+  project_id  = data.env0_project.default_project.id
+}
+
 resource "env0_project" "proj-foo" {
   name        = "proj-foo"
   description = "Example project"
