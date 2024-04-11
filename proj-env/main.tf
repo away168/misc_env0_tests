@@ -27,9 +27,10 @@ resource "env0_project" "proj-foo" {
 }
 
 resource "env0_environment" "env-foo" {
-  name        = "env-foo"
-  project_id  = env0_project.proj-foo.id
-  template_id = "0830c0ac-45ae-4256-8b20-17019dfd127f"
-
-  depends_on = [ env0_template_project_assignment.assignment ]
+  name          = "env-foo"
+  project_id    = env0_project.proj-foo.id
+  template_id   = "0830c0ac-45ae-4256-8b20-17019dfd127f"
+  force_destroy = true
+  
+  depends_on    = [ env0_template_project_assignment.assignment ]
 }
