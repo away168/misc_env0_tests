@@ -22,17 +22,17 @@ resource "env0_template_project_assignment" "assignment" {
 }
 
 resource "env0_project" "proj-foo" {
-  name        = "foo"
-  description = "Example Parent Project"
+  name              = "foo"
+  description       = "Example Parent Project"
   parent_project_id = local.root_project_id
 }
 
 resource "env0_project" "proj-bar" {
-  name        = "bar"
-  description = "Example Child Project"
+  name              = "bar"
+  description       = "Example Child Project"
   parent_project_id = env0_project.proj-foo.id
+  wait              = true
 }
-
 
 resource "env0_environment" "env-foo" {
   name          = "env-foo"
