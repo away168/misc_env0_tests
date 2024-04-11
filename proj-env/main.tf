@@ -14,7 +14,7 @@ provider "env0" {
 resource "env0_project" "proj-foo" {
   name        = "proj-foo"
   description = "Example project"
-  parentProjectId = "789cb1fc-6907-4b58-b8fd-eb47ed356085"
+  parent_project_id = "789cb1fc-6907-4b58-b8fd-eb47ed356085"
 }
 
 resource "env0_environment" "env-foo" {
