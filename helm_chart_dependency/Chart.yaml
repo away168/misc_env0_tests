@@ -1,0 +1,10 @@
+name: orgs-core
+version: 0.0.1
+appVersion: 0.0.1
+dependencies:
+  - name: schoolapp-frontend
+    version: 0.5.8
+    repository: https://gitlab.com/api/v4/projects/34240616/packages/helm/stable
+  - name: schoolapp-api
+    version: 0.5.8
+    repository: https://gitlab.com/api/v4/projects/34240616/packages/helm/stable
