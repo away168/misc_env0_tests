@@ -6,7 +6,7 @@ deploy:
       after:
         - name: Authenticate Kubernetes
           run: |
-            if [[ $AUTHENTICATE_K8S ]]; then 
+            if [[ $AUTHENTICATE_K8S == "true" ]]; then 
               aws eks update-kubeconfig --region us-west-2 --name $CLUSTER_NAME
             fi
         - name: Replace Namespace
