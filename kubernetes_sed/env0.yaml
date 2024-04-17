@@ -4,7 +4,9 @@ deploy:
   steps:
     setupVariables:
       after:
-        - echo "hello world"
+        - name: Authenticate Kubeconfig
+          run: |
+            aws eks update-kubeconfig --region us-west-2 --name $CLUSTER_NAME
         - name: Replace Namespace
           run: |
             sed -i "s/{{namespace-name}}/$NAMESPACE/g" namespace.yaml
