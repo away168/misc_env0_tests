@@ -2,7 +2,7 @@ version: 2
 
 deploy:
   steps:
-    setupVariables:
+    setupVariables: &k8s
       after:
         - name: Authenticate Kubernetes
           run: |
@@ -12,3 +12,6 @@ deploy:
         - name: Replace Namespace
           run: |
             sed -i "s/{{namespace-name}}/$NAMESPACE/g" namespace.yaml
+destroy:
+  steps:
+    setupVariables: *k8s
