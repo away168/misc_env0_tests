@@ -1,11 +1,9 @@
 environments:
   vpc:
-    name: ${WORKSPACE_NAME}-vpc
-    templateName: 'wf-test-template'
-    workspace: ${WORKSPACE_NAME}-vpc
+    name: vpc
+    templateName: 'workflow_null_resource_template'
   eks:
-    name: ${WORKSPACE_NAME}-eks
-    templateName: 'wf-test-template'
-    workspace: ${WORKSPACE_NAME}-eks
+    name: eks
+    templateName: 'workflow_null_resource_template'
     needs:
       - vpc
