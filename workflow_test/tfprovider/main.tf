@@ -19,7 +19,8 @@ locals {
 resource "env0_template" "template" {
   name                   = "workflow_null_resource_template"
   description            = "Null Resource Template"
-  repository             = "https://github.com/away168/workflow_test/template"
+  repository             = "https://github.com/away168/workflow_test"
+  path                   = "template"
   opentofu_version       = "latest"
   type                   = "opentofu"
   github_installation_id = 16766458
@@ -29,7 +30,8 @@ resource "env0_template" "template" {
 resource "env0_template" "workflow" {
   name                   = "workflow_test_template"
   description            = "Null Resource Template"
-  repository             = "https://github.com/away168/workflow_test/workflow_2"
+  repository             = "https://github.com/away168/workflow_test"
+  path                   = "workflow_2"
   type                   = "workflow"
   github_installation_id = 16766458
 }
@@ -65,7 +67,7 @@ resource "env0_environment" "example" {
 
     configuration {
         name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
-        value = "TEST_VALUE"
+        value = "eks.tfvars"
         type = "environment"
     }
   }
@@ -73,5 +75,5 @@ resource "env0_environment" "example" {
 
 variable "vpc_config_var" {
     type = string
-    default = "2024-APR-18"
+    default = "vpc.tfvars"
 }
