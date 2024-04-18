@@ -63,12 +63,12 @@ resource "env0_environment" "example" {
   dynamic "sub_environment_configuration" {
     for_each = toset (["vpc", "eks"])
     content {
-      alias = each.key
+      alias = sub_environment_configuration.key
       revision = "main"
 
       configuration {
           name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
-          value = "${each.key}.tfvars"
+          value = "${sub_environment_configuration.key}.tfvars"
           type = "environment"
       }
     }
