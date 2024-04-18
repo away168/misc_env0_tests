@@ -81,6 +81,8 @@ resource "env0_environment" "example" {
         type = "environment"
     }
   }
+
+  depends_on = [ env0_template_project_assignment.assignment ]
 }
 
 variable "vpc_config_var" {
