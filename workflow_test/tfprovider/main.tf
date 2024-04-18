@@ -59,6 +59,7 @@ resource "env0_environment" "example" {
   project_id                 = local.project_id
   template_id                = env0_template.workflow.id 
   approve_plan_automatically = true
+  force_destroy              = true
 
   dynamic "sub_environment_configuration" {
     for_each = toset (["vpc", "eks"])
