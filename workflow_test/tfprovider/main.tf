@@ -31,7 +31,7 @@ resource "env0_environment" "example" {
 
     configuration {
         name = "MY_ENV_VAR"
-        value = "TEST1"
+        value = var.vpc_config_var
         type = "environment"
     }
   }
@@ -46,4 +46,9 @@ resource "env0_environment" "example" {
         type = "environment"
     }
   }
+}
+
+variable "vpc_config_var" {
+    type = string
+    default = "2024-APR-18"
 }
