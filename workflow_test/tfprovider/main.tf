@@ -30,7 +30,7 @@ resource "env0_environment" "example" {
     revision = "main"
 
     configuration {
-        name = "MY_ENV_VAR"
+        name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
         value = var.vpc_config_var
         type = "environment"
     }
@@ -41,7 +41,7 @@ resource "env0_environment" "example" {
     revision = "main"
 
     configuration {
-        name = "TEST_KEY"
+        name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
         value = "TEST_VALUE"
         type = "environment"
     }
