@@ -20,9 +20,10 @@ data "env0_template" "example" {
 }
 
 resource "env0_environment" "example" {
-  name        = "environment"
-  project_id  = local.project_id
-  template_id = data.env0_template.example.id
+  name                       = "tf provider test of workflow"
+  project_id                 = local.project_id
+  template_id                = data.env0_template.example.id
+  approve_plan_automatically = true
 
   sub_environment_configuration {
     alias = "vpc"
