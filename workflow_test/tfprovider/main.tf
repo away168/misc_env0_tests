@@ -26,6 +26,11 @@ resource "env0_template" "template" {
   github_installation_id = 16766458
 }
 
+resource "env0_template_project_assignment" "template" {
+  template_id = env0_template.template.id
+  project_id  = local.project_id
+}
+
 ## the workflow temlate itself
 resource "env0_template" "workflow" {
   name                   = "workflow_test_template"
@@ -34,6 +39,11 @@ resource "env0_template" "workflow" {
   path                   = "workflow_test/workflow_2"
   type                   = "workflow"
   github_installation_id = 16766458
+}
+
+resource "env0_template_project_assignment" "assignment" {
+  template_id = env0_template.workflow.id
+  project_id  = local.project_id
 }
 
 # ## configuration used in workflow
