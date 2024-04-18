@@ -41,8 +41,8 @@ resource "env0_environment" "example" {
     revision = "main"
 
     configuration {
-        name = "MY_ENV_VAR"
-        value = "TEST1"
+        name = "TEST_KEY"
+        value = "TEST_VALUE"
         type = "environment"
     }
   }
