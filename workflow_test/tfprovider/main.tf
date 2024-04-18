@@ -46,13 +46,13 @@ resource "env0_template_project_assignment" "assignment" {
   project_id  = local.project_id
 }
 
-# ## configuration used in workflow
-# resource "env0_configuration_variable" "workspace_prefix" {
-#   name        = "WORKSPACE_PREFIX"
-#   value       = "FOO"
-#   type        = "environment"
-#   template_id = env0_template.workflow.id 
-# }
+## configuration used in workflow
+resource "env0_configuration_variable" "workspace_prefix" {
+  name        = "WORKSPACE_PREFIX"
+  value       = "FOO"
+  type        = "environment"
+  template_id = env0_template.workflow.id 
+}
 
 resource "env0_environment" "example" {
   name                       = "tf provider test of workflow"
@@ -82,7 +82,7 @@ resource "env0_environment" "example" {
     }
   }
 
-  depends_on = [ env0_template_project_assignment.assignment ]
+  depends_on = [ env0_template_project_assignment.assignment, env0_configuration_variable.workspace_prefix ]
 }
 
 variable "vpc_config_var" {
