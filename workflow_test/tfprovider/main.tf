@@ -63,7 +63,7 @@ resource "env0_environment" "example" {
   workspace                  = "foobar-2024-apr-19"
   is_inactive                = false
   prevent_auto_deploy        = true
-  
+
   # dynamic "sub_environment_configuration" {
   #   for_each = toset (["vpc", "eks"])
   #   content {
@@ -77,6 +77,12 @@ resource "env0_environment" "example" {
   #     }
   #   }
   # }
+
+  configuration {
+    name  = "WORKSPACE_PREFIX"
+    value = "FOO_2024_04_19"
+    type  = "environment"
+  }
 
   sub_environment_configuration {
     alias = "vpc"
