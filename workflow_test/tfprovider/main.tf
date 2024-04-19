@@ -60,7 +60,8 @@ resource "env0_environment" "example" {
   template_id                = env0_template.workflow.id 
   approve_plan_automatically = true
   force_destroy              = true
-
+  workspace                  = "foobar-2024-apr-19"
+  is_inactive                = false
   # dynamic "sub_environment_configuration" {
   #   for_each = toset (["vpc", "eks"])
   #   content {
@@ -78,6 +79,7 @@ resource "env0_environment" "example" {
   sub_environment_configuration {
     alias = "vpc"
     revision = "main"
+    workspace = "vpc-2024-apr-19"
 
     configuration {
         name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
@@ -89,6 +91,7 @@ resource "env0_environment" "example" {
   sub_environment_configuration {
     alias = "eks"
     revision = "main"
+    workspace = "eks-2024-apr-19"
 
     configuration {
         name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
