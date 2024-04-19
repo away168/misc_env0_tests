@@ -62,6 +62,8 @@ resource "env0_environment" "example" {
   force_destroy              = true
   workspace                  = "foobar-2024-apr-19"
   is_inactive                = false
+  prevent_auto_deploy        = true
+  
   # dynamic "sub_environment_configuration" {
   #   for_each = toset (["vpc", "eks"])
   #   content {
