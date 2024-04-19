@@ -92,7 +92,7 @@ resource "env0_environment" "example" {
 
     configuration {
         name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
-        value = "eks.tfvars"
+        value = var.eks_config_var
         type = "environment"
     }
   }
@@ -103,4 +103,9 @@ resource "env0_environment" "example" {
 variable "vpc_config_var" {
     type = string
     default = "vpc.tfvars"
+}
+
+variable "eks_config_var" {
+    type = string
+    default = "eks.tfvars"
 }
