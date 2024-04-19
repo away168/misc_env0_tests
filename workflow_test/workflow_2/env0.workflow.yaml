@@ -2,10 +2,8 @@ environments:
   vpc:
     name: vpc
     templateName: 'workflow_null_resource_template'
-    workspace: "${WORKSPACE_PREFIX}-vpc"
   eks:
     name: eks
     templateName: 'workflow_null_resource_template'
-    workspace: "${WORKSPACE_PREFIX}-eks"
     needs:
       - vpc
