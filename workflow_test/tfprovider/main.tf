@@ -61,30 +61,41 @@ resource "env0_environment" "example" {
   approve_plan_automatically = true
   force_destroy              = true
 
-  dynamic "sub_environment_configuration" {
-    for_each = toset (["vpc", "eks"])
-    content {
-      alias = sub_environment_configuration.key
-      revision = "main"
+  # dynamic "sub_environment_configuration" {
+  #   for_each = toset (["vpc", "eks"])
+  #   content {
+  #     alias = sub_environment_configuration.key
+  #     revision = "main"
 
-      configuration {
-          name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
-          value = "${sub_environment_configuration.key}.tfvars"
-          type = "environment"
-      }
+  #     configuration {
+  #         name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
+  #         value = "${sub_environment_configuration.key}.tfvars"
+  #         type = "environment"
+  #     }
+  #   }
+  # }
+
+  sub_environment_configuration {
+    alias = "vpc"
+    revision = "main"
+
+    configuration {
+        name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
+        value = var.vpc_config_var
+        type = "environment"
     }
   }
 
-  # sub_environment_configuration {
-  #   alias = "eks"
-  #   revision = "main"
+  sub_environment_configuration {
+    alias = "eks"
+    revision = "main"
 
-  #   configuration {
-  #       name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
-  #       value = "eks.tfvars"
-  #       type = "environment"
-  #   }
-  # }
+    configuration {
+        name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
+        value = "eks.tfvars"
+        type = "environment"
+    }
+  }
 
   depends_on = [ env0_template_project_assignment.assignment, env0_configuration_variable.workspace_prefix ]
 }
