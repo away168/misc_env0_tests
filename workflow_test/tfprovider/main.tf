@@ -2,7 +2,7 @@ terraform {
   required_providers {
     env0 = {
       source = "env0/env0"
-      version = "1.18.1"
+      version = "1.18.3"
     }
   }
 }
@@ -60,7 +60,7 @@ resource "env0_environment" "example" {
   template_id                = env0_template.workflow.id 
   approve_plan_automatically = true
   force_destroy              = true
-  workspace                  = "foobar-2024-apr-19"
+  workspace                  = "foobar-2024-apr-26"
   is_inactive                = false
   prevent_auto_deploy        = true
 
