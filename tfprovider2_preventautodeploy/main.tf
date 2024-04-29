@@ -17,7 +17,7 @@ locals {
 }
 
 resource "env0_environment" "example" {
-  name                       = "tf provider test of workflow"
+  name                       = "tf provider test of autodeploy"
   project_id                 = local.project_id
   template_id                = local.template_id
   approve_plan_automatically = true
