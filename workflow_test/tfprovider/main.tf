@@ -86,7 +86,7 @@ resource "env0_environment" "example" {
 
   sub_environment_configuration {
     alias = "vpc"
-    revision = "main"
+    revision = "dev1"
     workspace = "vpc-2024-apr-19"
 
     configuration {
@@ -98,7 +98,7 @@ resource "env0_environment" "example" {
 
   sub_environment_configuration {
     alias = "eks"
-    revision = "main"
+    revision = "dev"
     workspace = "eks-2024-apr-19"
 
     configuration {
