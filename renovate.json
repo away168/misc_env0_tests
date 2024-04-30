@@ -1,9 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended",
-    ":dependencyDashboard",
-    "github>away168/renovate-config"
+    "github>away168/renovate-config"  
   ],
   "schedule": ["before 4am"]
 }
