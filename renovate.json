@@ -3,7 +3,7 @@
   "extends": [
     "config:recommended",
     ":dependencyDashboard",
-    "local>away168/renovate-config"
+    "github>away168/renovate-config"
   ],
   "schedule": ["before 4am"]
 }
