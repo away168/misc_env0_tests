@@ -54,12 +54,12 @@ resource "env0_configuration_variable" "workspace_prefix_template" {
   template_id = env0_template.workflow.id 
 }
 
-resource "env0_configuration_variable" "workspace_prefix_workflow" {
-  name           = "WORKSPACE_PREFIX"
-  value          = "FOO-from-env0-config-var"
-  type           = "environment"
-  environment_id = env0_environment.example.id
-}
+# resource "env0_configuration_variable" "workspace_prefix_workflow" {
+#   name           = "WORKSPACE_PREFIX"
+#   value          = "FOO-from-env0-config-var"
+#   type           = "environment"
+#   environment_id = env0_environment.example.id
+# }
 
 resource "env0_environment" "example" {
   name                       = "tf provider test of workflow"
