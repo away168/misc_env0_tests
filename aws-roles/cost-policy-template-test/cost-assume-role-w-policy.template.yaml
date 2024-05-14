@@ -10,7 +10,7 @@ Resources:
   CostAssumeRole:
     UpdateReplacePolicy: "Retain"
     Type: "AWS::IAM::Role"
-    DeletionPolicy: "Retain"
+    DeletionPolicy: "Delete"
     Properties:
       Path: "/"
       ManagedPolicyArns:
@@ -30,7 +30,7 @@ Resources:
   CostPolicy:
     UpdateReplacePolicy: "Retain"
     Type: "AWS::IAM::ManagedPolicy"
-    DeletionPolicy: "Retain"
+    DeletionPolicy: "Delete"
     Properties:
       ManagedPolicyName: 
         !Join
