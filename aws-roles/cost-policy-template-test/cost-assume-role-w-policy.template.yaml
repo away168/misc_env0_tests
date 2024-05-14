@@ -28,6 +28,7 @@ Resources:
   CostPolicy:
     UpdateReplacePolicy: "Retain"
     Type: "AWS::IAM::ManagedPolicy"
+    DependsOn: "CostAssumeRole"
     DeletionPolicy: "Delete"
     Properties:
       ManagedPolicyName: 
