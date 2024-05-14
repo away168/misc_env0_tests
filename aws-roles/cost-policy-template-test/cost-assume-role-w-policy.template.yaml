@@ -51,5 +51,5 @@ Outputs:
   ExternalId:
     Value: !Ref ExternalId
     Description: "ExternalID for Env0"
-  AssumeRoleArn:
-    Value: !GetAtt CostAssumeRole.Arn
+  # AssumeRoleArn:
+  #   Value: !GetAtt CostAssumeRole.Arn
