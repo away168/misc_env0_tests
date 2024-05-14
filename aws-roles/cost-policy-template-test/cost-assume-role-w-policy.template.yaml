@@ -1,11 +1,11 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Parameters:
-  ExternalId:
-    Type: String
-    Default: external-id
   RoleName:
     Type: String
     Default: "env0-cost-role"
+  ExternalId:
+    Type: String
+    Default: replace-with-your-org-id
 Resources:
   CostAssumeRole:
     UpdateReplacePolicy: "Retain"
@@ -16,13 +16,13 @@ Resources:
       ManagedPolicyArns:
       - GetAtt: CostPolicy.Arn
       MaxSessionDuration: 3600
-      RoleName: "${RoleName}"
+      RoleName: !Ref RoleName
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
         - Condition:
             StringEquals:
-              sts:ExternalId: "${ExternalId}"
+              sts:ExternalId: !Ref ExternalId
           Action: "sts:AssumeRole"
           Effect: "Allow"
           Principal:
