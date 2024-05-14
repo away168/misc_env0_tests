@@ -14,7 +14,7 @@ Resources:
     Properties:
       Path: "/"
       ManagedPolicyArns:
-      - GetAtt: CostPolicy.Arn
+      - !GetAtt: CostPolicy.Arn
       MaxSessionDuration: 3600
       RoleName: !Ref RoleName
       AssumeRolePolicyDocument:
