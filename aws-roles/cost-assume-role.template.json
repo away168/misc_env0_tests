@@ -1,0 +1,47 @@
+{
+    "Metadata": {
+        "TemplateId": "arn:aws:cloudformation:us-west-2:326535729404:generatedTemplate/30a1572e-e79d-48eb-88f7-5729b382b00a"
+    },
+    "Resources": {
+        "Role": {
+            "UpdateReplacePolicy": "Retain",
+            "Type": "AWS::IAM::Role",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+                "Path": "/",
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::326535729404:policy/env0-cost-policy"
+                ],
+                "MaxSessionDuration": 3600,
+                "RoleName": "env0-cost-role",
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Condition": {
+                                "StringEquals": {
+                                    "sts:ExternalId": "95d1e0f1f32641aaaab2c7c6fff33a61"
+                                }
+                            },
+                            "Action": "sts:AssumeRole",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": "arn:aws:iam::913128560467:root"
+                            }
+                        }
+                    ]
+                },
+                "Tags": [
+                    {
+                        "Value": "",
+                        "Key": "env0_environment_id"
+                    },
+                    {
+                        "Value": "",
+                        "Key": "env0_project_id"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "ResourceType": "AWS::IAM::Role",
+    "ResourceIdentifier": {
+      "RoleName": "env0-cost-role"
+    },
+    "LogicalResourceId":"Role"
+  }
+]
