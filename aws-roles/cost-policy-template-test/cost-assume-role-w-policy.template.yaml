@@ -13,8 +13,6 @@ Resources:
     DeletionPolicy: "Delete"
     Properties:
       Path: "/"
-      ManagedPolicyArns:
-      - !GetAtt: CostPolicy.Arn
       MaxSessionDuration: 3600
       RoleName: !Ref RoleName
       AssumeRolePolicyDocument:
@@ -45,6 +43,8 @@ Resources:
         - Resource: "*"
           Action: "ce:GetCostAndUsage"
           Effect: "Allow"
+      Roles:
+        - !Ref RoleName
 Outputs:
   ExternalId:
     Value: !Ref ExternalId
