@@ -45,8 +45,6 @@ Resources:
         - Resource: "*"
           Action: "ce:GetCostAndUsage"
           Effect: "Allow"
-      Roles:
-      - Ref: "RoleName"
 Outputs:
   ExternalId:
     Value: !Ref ExternalId
