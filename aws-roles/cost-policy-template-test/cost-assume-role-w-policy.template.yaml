@@ -34,8 +34,9 @@ Resources:
     Properties:
       ManagedPolicyName: 
         !Join
-          - !Ref RoleName
-          - "policy"
+          - ""
+          - - !Ref RoleName
+            - "-policy"
       Path: "/"
       Description: ""
       PolicyDocument:
