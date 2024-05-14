@@ -7,26 +7,26 @@ Parameters:
     Type: String
     Default: "env0-cost-role"
 Resources:
-  # CostAssumeRole:
-  #   UpdateReplacePolicy: "Retain"
-  #   Type: "AWS::IAM::Role"
-  #   DeletionPolicy: "Retain"
-  #   Properties:
-  #     Path: "/"
-  #     ManagedPolicyArns:
-  #     - Ref: "CostPolicy"
-  #     MaxSessionDuration: 3600
-  #     RoleName: "${RoleName}"
-  #     AssumeRolePolicyDocument:
-  #       Version: "2012-10-17"
-  #       Statement:
-  #       - Condition:
-  #           StringEquals:
-  #             sts:ExternalId: "${ExternalId}"
-  #         Action: "sts:AssumeRole"
-  #         Effect: "Allow"
-  #         Principal:
-  #           AWS: "arn:aws:iam::913128560467:root"
+  CostAssumeRole:
+    UpdateReplacePolicy: "Retain"
+    Type: "AWS::IAM::Role"
+    DeletionPolicy: "Retain"
+    Properties:
+      Path: "/"
+      ManagedPolicyArns:
+      - Ref: "CostPolicy"
+      MaxSessionDuration: 3600
+      RoleName: "${RoleName}"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+        - Condition:
+            StringEquals:
+              sts:ExternalId: "${ExternalId}"
+          Action: "sts:AssumeRole"
+          Effect: "Allow"
+          Principal:
+            AWS: "arn:aws:iam::913128560467:root"
   CostPolicy:
     UpdateReplacePolicy: "Retain"
     Type: "AWS::IAM::ManagedPolicy"
@@ -51,5 +51,5 @@ Outputs:
   ExternalId:
     Value: !Ref ExternalId
     Description: "ExternalID for Env0"
-  # AssumeRoleArn:
-  #   Value: !GetAtt CostAssumeRole.Arn
+  AssumeRoleArn:
+    Value: !GetAtt CostAssumeRole.Arn
