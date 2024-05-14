@@ -8,13 +8,12 @@ Parameters:
     Default: replace-with-your-org-id
 Resources:
   CostAssumeRole:
-    UpdateReplacePolicy: "Retain"
     Type: "AWS::IAM::Role"
-    DeletionPolicy: "Delete"
     Properties:
       Path: "/"
       MaxSessionDuration: 3600
       RoleName: !Ref RoleName
+      Description: "Used by env0 to provide cost-monitoring features."
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -26,10 +25,8 @@ Resources:
           Principal:
             AWS: "arn:aws:iam::913128560467:root"
   CostPolicy:
-    UpdateReplacePolicy: "Retain"
     Type: "AWS::IAM::ManagedPolicy"
     DependsOn: "CostAssumeRole"
-    DeletionPolicy: "Delete"
     Properties:
       ManagedPolicyName: 
         !Join
@@ -37,7 +34,7 @@ Resources:
           - - !Ref RoleName
             - "-policy"
       Path: "/"
-      Description: ""
+      Description: "Used by env0 to provide cost-monitoring features."
       PolicyDocument:
         Version: "2012-10-17"
         Statement:
