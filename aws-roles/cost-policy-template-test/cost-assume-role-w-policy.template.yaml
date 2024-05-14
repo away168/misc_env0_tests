@@ -32,7 +32,7 @@ Resources:
     Type: "AWS::IAM::ManagedPolicy"
     DeletionPolicy: "Retain"
     Properties:
-      ManagedPolicyName: "env0-cost-policy"
+      ManagedPolicyName: "${RoleName}-policy"
       Path: "/"
       Description: ""
       Groups: []
@@ -42,7 +42,6 @@ Resources:
         - Resource: "*"
           Action: "ce:GetCostAndUsage"
           Effect: "Allow"
-          Sid: "VisualEditor0"
       Roles:
       - Ref: "RoleName"
       Users: []
