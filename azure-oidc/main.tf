@@ -21,18 +21,13 @@ provider "azurerm" {
 }
 
 
-
-module "resource-group" {
-  source = "api.env0.com/bde19c6d-d0dc-4b11-a951-8f43fe49db92/resource-group/azurerm"
-  version = "1.0.3"
-
-  prefix = "away-may15"
+resource "azurerm_resource_group" "example" {
+  name     = "away-may15-rg"
+  location =  "eastus2"
 }
 
-module "resource-group-test" {
+resource "azurerm_resource_group" "test" {
   provider = azurerm.test
-  source = "api.env0.com/bde19c6d-d0dc-4b11-a951-8f43fe49db92/resource-group/azurerm"
-  version = "1.0.3"
-
-  prefix = "away-may15-test"
+  name     = "away-may15-test-rg"
+  location =  "eastus2"
 }
