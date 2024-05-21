@@ -36,7 +36,6 @@ provider "azurerm" {
 
 data "azurerm_resource_group" "one" {
   name     = "sales-acme-demo"
-  location =  "westus3"
 }
 
 # Generate random text for a unique storage account name
