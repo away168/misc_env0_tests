@@ -44,14 +44,14 @@ resource "random_id" "one" {
     # Generate a new ID only when a new resource group is defined
     resource_group = data.azurerm_resource_group.one.name
   }
-  byte_length = 8
+  byte_length = 5
 }
 
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "one" {
   provider = azurerm.test
 
-  name                     = "env0sales${random_id.one.hex}"
+  name                     = "sales${random_id.one.hex}"
   location                 = data.azurerm_resource_group.one.location
   resource_group_name      = data.azurerm_resource_group.one.name
   account_tier             = "Standard"
@@ -87,7 +87,7 @@ variable "second_subscription" {
 
 resource "azurerm_resource_group" "test" {
   provider = azurerm.test
-  name     = "away-may15-test-rg"
+  name     = "env0sales${random_id.random_id.hex}"
   location =  "eastus2"
 }
 
@@ -97,7 +97,7 @@ resource "random_id" "random_id" {
     # Generate a new ID only when a new resource group is defined
     resource_group = azurerm_resource_group.test.name
   }
-  byte_length = 8
+  byte_length = 5
 }
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "this" {
