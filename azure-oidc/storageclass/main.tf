@@ -34,24 +34,42 @@ provider "azurerm" {
   subscription_id = var.second_subscription
 }
 
-data "azurerm_storage_account" "this" {
-  name                = "env0acmedemoazstorage"
-  resource_group_name = "sales-acme-demo"
+data "azurerm_resource_group" "one" {
+  name     = "sales-acme-demo"
+  location =  "westus3"
 }
 
+# Generate random text for a unique storage account name
+resource "random_id" "random_id" {
+  keepers = {
+    # Generate a new ID only when a new resource group is defined
+    resource_group = data.azurerm_resource_group.one.name
+  }
+  byte_length = 8
+}
+# Create storage account for boot diagnostics
+resource "azurerm_storage_account" "one" {
+  provider = azurerm.test
+
+  name                     = "env0sales${random_id.random_id.hex}"
+  location                 = data.azurerm_resource_group.one.location
+  resource_group_name      = data.azurerm_resource_group.one.name
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+}
 variable "container_name" {
   type = string
 }
 
 resource "azurerm_storage_container" "example" {
   name                  = var.container_name
-  storage_account_name  = data.azurerm_storage_account.this.name
+  storage_account_name  = azurerm_storage_account.one.name
   container_access_type = "private"
 }
 
 resource "azurerm_storage_blob" "example" {
   name                   = "my-awesome-content.zip"
-  storage_account_name   = data.azurerm_storage_account.this.name
+  storage_account_name   = azurerm_storage_account.one.name
   storage_container_name = azurerm_storage_container.example.name
   type                   = "Block"
 }
