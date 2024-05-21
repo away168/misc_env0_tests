@@ -9,15 +9,19 @@ terraform {
 
 provider "azurerm" {
   features {}
-  use_oidc = true
+
+  use_oidc          = true
+  use_azuread_auth  = true
   //subscription_id = "b48787a1-7145-425f-99af-62cde6c50e31"
 }
 
 provider "azurerm" {
   alias = "test"
   features {}
-  use_oidc = true
-  subscription_id = var.second_subscription
+
+  use_oidc         = true
+  use_azuread_auth = true
+  subscription_id  = var.second_subscription
 }
 
 
