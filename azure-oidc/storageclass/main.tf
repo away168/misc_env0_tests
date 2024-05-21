@@ -40,18 +40,19 @@ data "azurerm_resource_group" "one" {
 }
 
 # Generate random text for a unique storage account name
-resource "random_id" "random_id" {
+resource "random_id" "one" {
   keepers = {
     # Generate a new ID only when a new resource group is defined
     resource_group = data.azurerm_resource_group.one.name
   }
   byte_length = 8
 }
+
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "one" {
   provider = azurerm.test
 
-  name                     = "env0sales${random_id.random_id.hex}"
+  name                     = "env0sales${random_id.one.hex}"
   location                 = data.azurerm_resource_group.one.location
   resource_group_name      = data.azurerm_resource_group.one.name
   account_tier             = "Standard"
