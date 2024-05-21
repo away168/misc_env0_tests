@@ -7,23 +7,31 @@ terraform {
   }
 }
 
+
+# terraform {
+#   backend "azurerm" {
+#     resource_group_name  = "sales-acme-demo"
+#     storage_account_name = "sales-acme-demo-storage-accnt"
+#     container_name       = "test"
+#     key                  = "acme.tfstate"
+#     subscription_id      = "3ef32f99-33d5-4a4f-bf9c-8a3ebb2b0144"
+#     use_azuread_auth     = true
+#     use_oidc             = true
+#   }
+# }
+
+# PROVIDER 
 provider "azurerm" {
   features {}
   use_oidc = true
   //subscription_id = "b48787a1-7145-425f-99af-62cde6c50e31"
 }
 
-
-terraform {
-  backend "azurerm" {
-    resource_group_name  = "sales-acme-demo"
-    storage_account_name = "sales-acme-demo-storage-accnt"
-    container_name       = "tstate"
-    key                  = "wan-eu-test-gwc.tfstate"
-    subscription_id      = "3ef32f99-33d5-4a4f-bf9c-8a3ebb2b0144"
-    use_azuread_auth     = true
-    use_oidc             = true
-  }
+provider "azurerm" {
+  alias = "test"
+  features {}
+  use_oidc = true
+  subscription_id = var.second_subscription
 }
 
 data "azurerm_storage_account" "this" {
@@ -57,14 +65,6 @@ variable "second_subscription" {
   default = "3ef32f99-33d5-4a4f-bf9c-8a3ebb2b0144"
 }
 
-# PROVIDER 
-provider "azurerm" {
-  alias = "test"
-  features {}
-  use_oidc = true
-  subscription_id = var.second_subscription
-}
-
 ### RESOURCES
 
 resource "azurerm_resource_group" "test" {
@@ -92,15 +92,19 @@ resource "azurerm_storage_account" "this" {
   account_replication_type = "LRS"
 }
 
-resource "azurerm_storage_container" "example" {
+resource "azurerm_storage_container" "two" {
+  provider = azurerm.test
+
   name                  = var.container_name
   storage_account_name  = azurerm_storage_account.this.name
   container_access_type = "private"
 }
 
-resource "azurerm_storage_blob" "example" {
+resource "azurerm_storage_blob" "two" {
+  provider = azurerm.test
+
   name                   = "my-awesome-content.zip"
   storage_account_name   = azurerm_storage_account.this.name
-  storage_container_name = azurerm_storage_container.example.name
+  storage_container_name = azurerm_storage_container.two.name
   type                   = "Block"
 }
