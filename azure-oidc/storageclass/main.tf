@@ -44,7 +44,7 @@ resource "random_id" "one" {
     # Generate a new ID only when a new resource group is defined
     resource_group = data.azurerm_resource_group.one.name
   }
-  byte_length = 5
+  byte_length = 8
 }
 
 # Create storage account for boot diagnostics
@@ -97,7 +97,7 @@ resource "random_id" "random_id" {
     # Generate a new ID only when a new resource group is defined
     resource_group = azurerm_resource_group.test.name
   }
-  byte_length = 5
+  byte_length = 8
 }
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "this" {
