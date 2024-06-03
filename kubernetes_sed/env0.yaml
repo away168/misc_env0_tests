@@ -2,6 +2,12 @@ version: 2
 
 deploy:
   steps:
+    setupVariables:
+      after:
+        - name: Check kubeconfig
+          run: | 
+            ls -la ~/.kube
+            echo $KUBECONFIG
     k8sDiff: &k8s
       before:
         - name: Check kubeconfig
