@@ -7,7 +7,7 @@ deploy:
         - name: Check kubeconfig
           run: | 
             ls -la ~/.kube
-            cat ~/.kube/config
+            echo $KUBECONFIG
         - name: Run kubectl
           run: |
             kubectl get ns
