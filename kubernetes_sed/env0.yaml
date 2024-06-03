@@ -4,6 +4,13 @@ deploy:
   steps:
     setupVariables: &k8s
       after:
+        - name: Check kubeconfig
+          run: | 
+            ls -la ~/.kube
+            cat ~/.kube/config
+        - name: Run kubectl
+          run: |
+            kubectl get ns
         - name: Authenticate Kubernetes
           run: |
             if [[ $AUTHENTICATE_K8S == "true" ]]; then 
