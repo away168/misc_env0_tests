@@ -2,8 +2,8 @@ version: 2
 
 deploy:
   steps:
-    setupVariables: &k8s
-      after:
+    k8sDiff: &k8s
+      before:
         - name: Check kubeconfig
           run: | 
             ls -la ~/.kube
@@ -16,4 +16,4 @@ deploy:
             sed -i "s/{{namespace-name}}/$NAMESPACE/g" namespace.yaml
 destroy:
   steps:
-    setupVariables: *k8s
+    k8sdiff: *k8s
