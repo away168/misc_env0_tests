@@ -12,7 +12,7 @@ provider "env0" {
 }
 
 resource "env0_template" "test" {
-  name                   = "template-test-tg-az-rg"
+  name                   = "template-test-tg-az-rg-2"
   opentofu_version       = "RESOLVE_FROM_CODE"
   path                   = "tg-az-rg/non-prod/us-west-2/qa/azurerg"
   repository             = "https://github.com/away168/misc_env0_tests"
