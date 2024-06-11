@@ -16,8 +16,8 @@ resource "env0_template" "test" {
   opentofu_version       = "RESOLVE_FROM_CODE"
   path                   = "tg-az-rg/non-prod/us-west-2/qa/azurerg"
   repository             = "https://github.com/away168/misc_env0_tests"
-  retries_on_deploy      = 0
-  retries_on_destroy     = 0
+  # retries_on_deploy      = 0
+  # retries_on_destroy     = 0
   revision               = "main"
   github_installation_id = "16766458"
   # ssh_keys               = [
