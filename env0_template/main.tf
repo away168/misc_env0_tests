@@ -13,7 +13,7 @@ provider "env0" {
 
 resource "env0_template" "test" {
   name                   = "template-test-tg-az-rg"
-  opentofu_version       = "RESOLVE_FROM_CODE"
+  opentofu_version       = "latest"
   path                   = "tg-az-rg/non-prod/us-west-2/qa/azurerg"
   repository             = "https://github.com/away168/misc_env0_tests"
   # retries_on_deploy      = 0
