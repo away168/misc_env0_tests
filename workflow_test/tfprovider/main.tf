@@ -103,9 +103,9 @@ resource "env0_environment" "example" {
     workspace = "vpc-2024-apr-19"
 
     configuration {
-        name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
-        value = var.vpc_config_var
-        type = "environment"
+      name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
+      value = var.vpc_config_var
+      type = "environment"
     }
   }
 
@@ -115,9 +115,15 @@ resource "env0_environment" "example" {
     workspace = "eks-2024-apr-19"
 
     configuration {
-        name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
-        value = var.eks_config_var
-        type = "environment"
+      name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
+      value = var.eks_config_var
+      type = "environment"
+    }
+
+    configuration {
+      name = "foo"
+      value = "delete-me"
+      type = "environment"
     }
   }
 
