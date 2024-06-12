@@ -121,7 +121,7 @@ resource "env0_environment" "example" {
     }
   }
 
-  depends_on = [ env0_template_project_assignment.assignment, env0_configuration_variable.workspace_prefix_template ]
+  depends_on = [ ]
 }
 
 variable "vpc_config_var" {
