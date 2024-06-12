@@ -120,11 +120,11 @@ resource "env0_environment" "example" {
       type = "environment"
     }
 
-    configuration {
-      name = "foo"
-      value = "delete-me"
-      type = "environment"
-    }
+    # configuration {
+    #   name = "foo"
+    #   value = "delete-me"
+    #   type = "environment"
+    # }
   }
 
   depends_on = [ ]
