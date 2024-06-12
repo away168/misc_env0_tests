@@ -2,7 +2,7 @@ terraform {
   required_providers {
     env0 = {
       source = "env0/env0"
-      version = "~> 1.18.5"
+      version = "> 1.18.12"
     }
   }
 }
@@ -47,19 +47,19 @@ resource "env0_template_project_assignment" "assignment" {
 }
 
 ## configuration used in workflow
-resource "env0_configuration_variable" "workspace_prefix_template" {
-  name        = "WORKSPACE_PREFIX"
-  value       = "FOO"
-  type        = "environment"
-  template_id = env0_template.workflow.id 
-}
+# resource "env0_configuration_variable" "workspace_prefix_template" {
+#   name        = "WORKSPACE_PREFIX"
+#   value       = "FOO"
+#   type        = "environment"
+#   template_id = env0_template.workflow.id 
+# }
 
-resource "env0_configuration_variable" "workspace_prefix_workflow" {
-  name           = "WORKSPACE_PREFIX"
-  value          = "FOO-from-env0-config-var"
-  type           = "environment"
-  environment_id = env0_environment.example.id
-}
+# resource "env0_configuration_variable" "workspace_prefix_workflow" {
+#   name           = "WORKSPACE_PREFIX"
+#   value          = "FOO-from-env0-config-var"
+#   type           = "environment"
+#   environment_id = env0_environment.example.id
+# }
 
 resource "env0_environment" "example" {
   name                       = "tf provider test of workflow"
@@ -93,7 +93,7 @@ resource "env0_environment" "example" {
 
   configuration {
     name  = "WORKSPACE_PREFIX"
-    value = "FOO_2024_04_19"
+    value = "FOO_2024_06_12"
     type  = "environment"
   }
 
