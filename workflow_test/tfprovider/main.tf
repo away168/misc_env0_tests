@@ -62,7 +62,7 @@ resource "env0_template_project_assignment" "assignment" {
 # }
 
 resource "env0_environment" "example" {
-  name                       = "tf provider test of workflow"
+  name                       = "workflow (managed by tf)"
   project_id                 = local.project_id
   template_id                = env0_template.workflow.id 
   approve_plan_automatically = true
