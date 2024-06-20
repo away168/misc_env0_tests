@@ -26,12 +26,15 @@ resource "env0_environment" "helm" {
   auto_deploy_on_path_changes_only = true
   prevent_auto_deploy              = true
   auto_deploy_by_custom_glob       = "+((_env0/modules/environment/sre/devops/**)|($${env0_template_dir_path}/**))"
+  approve_plan_automatically       = null
+  ttl                              = null
   
   configuration {
     type        = "environment"
     name        = "ENV0_HELM_SET_environment"
     value       = var.environment
     is_required = true
+    schema_um   = null
   }
 }
 
