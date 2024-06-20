@@ -17,8 +17,8 @@ resource "env0_environment" "helm" {
 
   name      = "argo-requisites-${var.environment}"
   workspace = "argo-requisites-${var.environment}"
-  k8s_namespace                    = "misc-tests"
   
+  k8s_namespace                    = "misc-tests"
   revision                         = "main"
   is_remote_backend                = true
   run_plan_on_pull_requests        = true
@@ -26,7 +26,7 @@ resource "env0_environment" "helm" {
   auto_deploy_on_path_changes_only = true
   prevent_auto_deploy              = true
   auto_deploy_by_custom_glob       = "+((_env0/modules/environment/sre/devops/**)|($${env0_template_dir_path}/**))"
-  approve_plan_automatically       = null
+  approve_plan_automatically       = false
   ttl                              = null
   
   configuration {
@@ -34,7 +34,9 @@ resource "env0_environment" "helm" {
     name        = "ENV0_HELM_SET_environment"
     value       = var.environment
     is_required = true
-    schema_enum = null
+    schema_enum = []
+    description = ""
+    regex       = ""
   }
 }
 
