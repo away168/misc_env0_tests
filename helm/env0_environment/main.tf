@@ -34,7 +34,7 @@ resource "env0_environment" "helm" {
     name        = "ENV0_HELM_SET_environment"
     value       = var.environment
     is_required = true
-    schema_um   = null
+    schema_enum = null
   }
 }
 
