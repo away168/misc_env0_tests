@@ -1,3 +1,16 @@
+terraform {
+  required_providers {
+    env0 = {
+      source = "env0/env0"
+      version = ">= 1.18.12"
+    }
+  }
+}
+
+provider "env0" {
+  # Configuration options
+}
+
 resource "env0_environment" "helm" {
   project_id  = "9ab305ff-3c4b-4354-9f1d-7a78b87a8d54" # Andrew > Helm Test
   template_id = "504dd2e8-30a1-4b9d-819e-52257f72d688" # helm nginx template
