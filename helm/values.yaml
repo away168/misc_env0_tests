@@ -1,0 +1,8 @@
+agentAdditionalLabels:
+  foo: bar
+  apples: oranges
+customVolumeMounts:
+- name: foo
+  mountPath: /foo-mount
+- name: bar
+  mountPath: /bar-mount

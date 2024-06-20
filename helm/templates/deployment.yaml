@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    env0: agent-trigger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      env0: agent-trigger
+  template:
+    metadata:
+      labels:
+        env0: agent-trigger
+        {{- if .Values.agentAdditionalLabels -}}
+        {{ toYaml .Values.agentAdditionalLabels | nindent 8 }}
+        {{- end }}
+      annotations:
+    spec:
+      serviceAccountName: agent-trigger-service-account
+      restartPolicy: Always
+      volumes:
+      containers:
+        - name: env0-agent-trigger
+          image: nginx:1.19
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            {{- if .Values.customVolumeMounts -}}
+            {{ toYaml .Values.customVolumeMounts | nindent 12 }}
+            {{- end }}
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1000Mi
