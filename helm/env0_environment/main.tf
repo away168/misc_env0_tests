@@ -8,6 +8,7 @@ terraform {
 }
 
 provider "env0" {
+  organization_id = "bde19c6d-d0dc-4b11-a951-8f43fe49db92"
   # Configuration options
 }
 
@@ -28,6 +29,9 @@ resource "env0_environment" "helm" {
   auto_deploy_by_custom_glob       = "+((_env0/modules/environment/sre/devops/**)|($${env0_template_dir_path}/**))"
   approve_plan_automatically       = false
   ttl                              = null
+  force_destroy                    = true
+  removal_strategy                 = "mark_as_archived"
+
   
   configuration {
     type        = "environment"
