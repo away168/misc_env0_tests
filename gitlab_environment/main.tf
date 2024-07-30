@@ -29,6 +29,10 @@ resource "env0_environment" "test" {
   is_remote_backend          = true
   removal_strategy           = "mark_as_archived"
   workspace                  = "gitlab_integration_jul30"
+  auto_deploy_on_path_changes_only = false
+  deploy_on_push                   = false
+  run_plan_on_pull_requests        = false
+  ttl                    = null
 
   without_template_settings {
     type                   = "opentofu"
@@ -39,10 +43,5 @@ resource "env0_environment" "test" {
     gitlab_project_id      = "28901682"
     token_name             = "andrew.way"
     token_id               = "d082a67d-8d27-41e5-8863-22030f47986a"
-    ttl                    = null
-
-    auto_deploy_on_path_changes_only = false
-    deploy_on_push                   = false
-    run_plan_on_pull_requests        = false
   }
 }
