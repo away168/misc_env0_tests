@@ -32,7 +32,6 @@ resource "env0_environment" "test" {
 
   without_template_settings {
     type                   = "opentofu"
-    name                   = "gitlab_integration_test"
     opentofu_version       = "latest"
     path                   = "simple-ec2-instance"
     repository             = "https://gitlab.com/env0/acme-demo.git"
