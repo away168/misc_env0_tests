@@ -23,7 +23,7 @@ resource "env0_template" "test" {
 }
 
 resource "env0_environment" "test" {
-   name                      = "Test GitLab Integration Environment"
+  name                      = "Test GitLab Integration Environment"
   project_id                 = "a89e4ea0-7fb8-4a2f-a3e2-92472b6a7371"
   approve_plan_automatically = true
   is_remote_backend          = true
@@ -39,5 +39,10 @@ resource "env0_environment" "test" {
     gitlab_project_id      = "28901682"
     token_name             = "andrew.way"
     token_id               = "d082a67d-8d27-41e5-8863-22030f47986a"
+    ttl                    = null
+
+    auto_deploy_on_path_changes_only = false
+    deploy_on_push                   = false
+    run_plan_on_pull_requests        = false
   }
 }
