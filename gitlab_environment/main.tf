@@ -23,12 +23,12 @@ resource "env0_template" "test" {
 }
 
 resource "env0_environment" "test" {
-   name                       = "${var.default_team_name} Project"
-  project_id                 = data.env0_environment.this.project_id
+   name                      = "Test GitLab Integration Environment"
+  project_id                 = "a89e4ea0-7fb8-4a2f-a3e2-92472b6a7371"
   approve_plan_automatically = true
   is_remote_backend          = true
   removal_strategy           = "mark_as_archived"
-  workspace                  = "${var.default_team_name}_project"
+  workspace                  = "gitlab_integration_jul30"
 
   without_template_settings {
     type                   = "opentofu"
