@@ -97,11 +97,11 @@ resource "env0_environment" "example" {
     type  = "environment"
   }
 
-  configuration {
-    name  = "test_tf_var"
-    value = "FOO"
-    type  = "terraform"
-  }
+  # configuration {
+  #   name  = "test_tf_var"
+  #   value = "FOO"
+  #   type  = "terraform"
+  # }
 
   sub_environment_configuration {
     alias     = "vpc"
