@@ -6,18 +6,18 @@
 
 locals {
   # Automatically load account-level variables
-  account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl"))
+  #account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl"))
 
   # Automatically load region-level variables
-  region_vars = read_terragrunt_config(find_in_parent_folders("region.hcl"))
+  #region_vars = read_terragrunt_config(find_in_parent_folders("region.hcl"))
 
   # Automatically load environment-level variables
-  environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
+  #environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
 
   # Extract the variables we need for easy access
-  account_name = local.account_vars.locals.account_name
+  #account_name = local.account_vars.locals.account_name
   #account_id   = local.account_vars.locals.aws_account_id
-  location   = local.region_vars.locals.location
+  #location   = local.region_vars.locals.location
 }
 
 # Generate an AWS provider block
@@ -26,7 +26,6 @@ generate "provider" {
   if_exists = "overwrite"
   contents  = <<EOF
 terraform {
-  required_version = "~>1.6.0"
 }
 terraform {
   required_providers {
@@ -72,8 +71,8 @@ EOF
 # Configure root level variables that all resources can inherit. This is especially helpful with multi-account configs
 # where terraform_remote_state data sources are placed directly into the modules.
 
-inputs = merge(
-  local.account_vars.locals,
-  local.region_vars.locals,
-  local.environment_vars.locals,
-)
+// inputs = merge(
+//   local.account_vars.locals,
+//   local.region_vars.locals,
+//   local.environment_vars.locals,
+// )
