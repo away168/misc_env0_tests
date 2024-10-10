@@ -120,6 +120,11 @@ resource "env0_environment" "example" {
       type = "environment"
     }
 
+    configuration {
+      name  = "foo"
+      value = "bar"
+      type  = "terraform"
+    }
     # configuration {
     #   name = "foo"
     #   value = "delete-me"
