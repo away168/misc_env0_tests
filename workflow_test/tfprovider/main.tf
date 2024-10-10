@@ -122,7 +122,7 @@ resource "env0_environment" "example" {
 
     configuration {
       name  = "foo"
-      value = null
+      value = "bar"
       type  = "terraform"
     }
     # configuration {
