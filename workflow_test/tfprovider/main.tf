@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     env0 = {
-      source = "env0/env0"
+      source  = "env0/env0"
       version = ">= 1.18.12"
     }
   }
@@ -12,7 +12,7 @@ provider "env0" {
 }
 
 locals {
-    project_id = "6422fc97-70f0-4358-a24f-04ebde645a52"  // dev playgroun / andrew / workflow_test
+  project_id = "6422fc97-70f0-4358-a24f-04ebde645a52" // dev playgroun / andrew / workflow_test
 }
 
 ## the template that the workflows use
@@ -64,7 +64,7 @@ resource "env0_template_project_assignment" "assignment" {
 resource "env0_environment" "example" {
   name                       = "workflow (managed by tf)"
   project_id                 = local.project_id
-  template_id                = env0_template.workflow.id 
+  template_id                = env0_template.workflow.id
   approve_plan_automatically = true
   force_destroy              = true
   workspace                  = "foobar-2024-apr-26"
@@ -98,31 +98,31 @@ resource "env0_environment" "example" {
   }
 
   sub_environment_configuration {
-    alias = "vpc"
-    revision = "dev"
+    alias     = "vpc"
+    revision  = "dev"
     workspace = "vpc-2024-apr-19"
 
     configuration {
-      name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
+      name  = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
       value = var.vpc_config_var
-      type = "environment"
+      type  = "environment"
     }
   }
 
   sub_environment_configuration {
-    alias = "eks"
-    revision = "dev"
+    alias     = "eks"
+    revision  = "dev"
     workspace = "eks-2024-apr-19"
 
     configuration {
-      name = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
+      name  = "ENV0_TERRAFORM_CONFIG_FILE_PATH"
       value = var.eks_config_var
-      type = "environment"
+      type  = "environment"
     }
 
     configuration {
       name  = "foo"
-      value = "bar"
+      value = null
       type  = "terraform"
     }
     # configuration {
@@ -132,15 +132,16 @@ resource "env0_environment" "example" {
     # }
   }
 
-  depends_on = [ ]
+  depends_on = []
 }
 
 variable "vpc_config_var" {
-    type = string
-    default = "vpc.tfvars"
+  type    = string
+  default = "vpc.tfvars"
 }
 
 variable "eks_config_var" {
-    type = string
-    default = "eks.tfvars"
+  type    = string
+  default = "eks.tfvars"
 }
+
