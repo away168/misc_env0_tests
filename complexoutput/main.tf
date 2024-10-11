@@ -15,4 +15,7 @@ output "main" {
       password = "bar"
     }
   }
+
+  sensitive = true
 }
+
