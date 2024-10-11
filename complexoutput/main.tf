@@ -3,18 +3,18 @@ locals {
 }
 
 output "main" {
-  value = { 
-    endpoint = "https"
-    reader_endpoint = "bar"
+  value = jsonencode({ 
+    endpoint = "core.cluster-c6e7cyvkajcg.eu-west-2.rds.amazonaws.com"
+    reader_endpoint = "core.cluster-c6e7cyvkajcg.eu-west-2.rds.amazonaws.com"
     service = {
       username = "gitlab"
-      password = "bar"
+      fake_password = "foo"
     }
     flyway = {
       username = "flyway"
-      password = "bar"
+      fake_password = "bar"
     }
-  }
+  })
 
   sensitive = true
 }
