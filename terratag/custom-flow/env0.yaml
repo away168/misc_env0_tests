@@ -1,0 +1,22 @@
+version: 2
+
+deploy:
+  steps:
+    setupVariables:
+      after:
+        - name: Install Terratag
+          run: |
+            npm -g install "@env0/terratag@0.4.1"
+            mv /usr/local/lib/node_modules/@env0/terratag/terratag /opt/terratag
+            /opt/terratag -h
+
+#     terraformInit:
+#       before:
+#    terraformPlan:
+#      after:
+#  onCompletion:
+#    - type: string
+#  onSuccess:
+#    - type: string
+#  onFailure:
+#    - type: string
