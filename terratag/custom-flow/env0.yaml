@@ -6,8 +6,9 @@ deploy:
       after:
         - name: Install Terratag
           run: |
-            npm -g install "@env0/terratag@0.4.1"
-            mv /usr/local/lib/node_modules/@env0/terratag/terratag /opt/terratag
+            curl -L https://github.com/env0/terratag/releases/download/v0.4.1/terratag_0.4.1_linux_amd64.tar.gz -o terratag.tgz
+            tar -zxvf terratag.tgz
+            mv ./terratag /opt/terratag
             /opt/terratag -h
 
 #     terraformInit:
