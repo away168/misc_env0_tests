@@ -9,7 +9,7 @@ deploy:
             curl -L https://github.com/env0/terratag/releases/download/v0.4.1/terratag_0.4.1_linux_amd64.tar.gz -o terratag.tgz
             tar -zxvf terratag.tgz
             mv ./terratag /opt/terratag
-            /opt/terratag -h
+            /opt/terratag -version
 
 #     terraformInit:
 #       before:
